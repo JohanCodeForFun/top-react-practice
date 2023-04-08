@@ -3,25 +3,28 @@ import React, { Component } from "react";
 import MyComponent from "./MyComponent";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
-    this.onClickBtn = this.onClickBtn.bind(this);
-  }
-  onClickBtn() {
-    console.log("button has been clicked!");
+    this.state = {
+      count: 0,
+    };
+
+    this.countUp = this.countUp.bind(this);
   }
 
+  countUp() {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  }
+  
   render() {
     return (
-      <div className="App">
-        <h1>React Practice</h1>
-        <MyComponent title="my component with prop title" 
-        onButtonClicked={this.onClickBtn}/>
-        <div className="card">
-          <p>test</p>
-        </div>
-      </div>
+       <div>
+        <button onClick={this.countUp}>Click Me!</button>
+        <p>{this.state.count}</p>
+       </div>
     );
   }
 }
